@@ -20,14 +20,14 @@ try {
 }
 
 try {
-    $projects = $pdo->prepare("CREATE TABLE IF NOT EXISTS $dbName.projects (id INT(11) NOT NULL AUTO_INCREMENT, name VARCHAR(50) NOT NULL, description VARCHAR(255), PRIMARY KEY(id))");
+    $projects = $pdo->prepare("CREATE TABLE IF NOT EXISTS $dbName.projects (id INT(11) NOT NULL AUTO_INCREMENT, name VARCHAR(50) NOT NULL, description VARCHAR(255), language VARCHAR(25) NOT NULL, PRIMARY KEY(id))");
     $projects->execute();
 } catch (PDOException $e) {
     echo 'Error while creating table projects : ' . $e->getMessage();
 }
 
 try {
-    $tasks = $pdo->prepare("CREATE TABLE IF NOT EXISTS $dbName.tasks (id INT(11) NOT NULL AUTO_INCREMENT, project_id INT(11) NOT NULL, description VARCHAR(255), PRIMARY KEY(id), FOREIGN KEY (project_id) REFERENCES projects(id))");
+    $tasks = $pdo->prepare("CREATE TABLE IF NOT EXISTS $dbName.tasks (id INT(11) NOT NULL AUTO_INCREMENT, project_id INT(11) NOT NULL, description VARCHAR(255), PRIMARY KEY(id))");
     $tasks->execute();
 } catch (PDOException $e) {
     echo 'Error while creating table tasks : ' . $e->getMessage();

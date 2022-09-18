@@ -30,8 +30,8 @@
                 </li>
             </ul>
             <?php if (isAuthorized() == 1) { ?>
-                <a href="/admin/projects/new.php"><button class="btn btn-primary">Ajouter un client</button></a>
-                <a href="/public/auth/logout.php"><button class="btn btn-danger">Déconnexion</button></a>
+                <a href="/taskman/admin/projects/new.php"><button class="btn btn-primary">Ajouter un project</button></a>
+                <a href="/taskman/public/auth/logout.php"><button class="btn btn-danger">Déconnexion</button></a>
             <?php } ?>
         </div>
     </div>
