@@ -14,7 +14,7 @@ if (!empty($_GET) && isset($_GET['id'])) {
     }
 
     if ($checkProject->rowCount() == 0) {
-        die('<div class="alert alert-danger" role="alert"><b>Aucun projet trouvé.</b></div> <meta http-equiv="REFRESH" content="3;url=/taskman/admin/projects/">');
+        die('<div class="alert alert-danger" role="alert"><b>Aucun projet trouvé.</b></div> <meta http-equiv="REFRESH" content="3;url=/admin/projects/">');
     }
 
     foreach ($checkProject as $row) {
@@ -23,7 +23,7 @@ if (!empty($_GET) && isset($_GET['id'])) {
         $language = $row['language'];
     }
 } else {
-    die('<div class="alert alert-danger" role="alert"><b>Méthode non approuvée.</b></div> <meta http-equiv="REFRESH" content="3;url=/baptiste/admin/clients/">');
+    die('<div class="alert alert-danger" role="alert"><b>Méthode non approuvée.</b></div> <meta http-equiv="REFRESH" content="3;url=/admin/projects/index.php">');
 }
 
 if (isset($_POST) && !empty($_POST)) {

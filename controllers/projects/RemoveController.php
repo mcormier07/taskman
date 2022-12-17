@@ -14,17 +14,17 @@ if (!empty($_GET) && isset($_GET['id'])) {
     }
 
     if ($checkAccount->rowCount() == 0) {
-        die('<div class="alert alert-danger" role="alert"><b>Aucun projet trouvé.</b></div> <meta http-equiv="REFRESH" content="3;url=/taskman/admin/projects/">');
+        die('<div class="alert alert-danger" role="alert"><b>Aucun projet trouvé.</b></div> <meta http-equiv="REFRESH" content="3;url=/admin/projects/">');
     }
 
     try {
         $delete = $pdo->prepare("DELETE FROM $dbName.projects WHERE id = ?");
         $delete->bindParam(1, $id);
         $delete->execute();
-        echo '<div class="alert alert-success" role="alert"><b>Projet supprimé.</b></div> <meta http-equiv="REFRESH" content="3;url=/taskman/admin/projects/">';
+        echo '<div class="alert alert-success" role="alert"><b>Projet supprimé.</b></div> <meta http-equiv="REFRESH" content="3;url=/admin/projects/">';
     } catch (PDOException $e) {
         die('<div class="alert alert-denager" role="alert"><b>Une erreur s\'est produite lors de la suppression du projet :</b>' . $e->getMessage());
     }
 } else {
-    die('<div class="alert alert-danger" role="alert"><b>Méthode non approuvée.</b></div> <meta http-equiv="REFRESH" content="3;url=/taskman/admin/projects/">');
+    die('<div class="alert alert-danger" role="alert"><b>Méthode non approuvée.</b></div> <meta http-equiv="REFRESH" content="3;url=/admin/projects/">');
 }

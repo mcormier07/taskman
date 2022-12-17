@@ -17,7 +17,7 @@ if (isset($_POST) && !empty($_POST)) {
     }
 
     if ($checkProject->rowCount() > 0) {
-        die('<div class="alert alert-danger" role="alert"><b>Ce projet existe déjà.</b></div> <meta http-equiv="REFRESH" content="3;url=/taskman/admin/projects/new.php">');
+        die('<div class="alert alert-danger" role="alert"><b>Ce projet existe déjà.</b></div> <meta http-equiv="REFRESH" content="3;url=/admin/projects/new.php">');
     }
 
     try {
@@ -26,7 +26,7 @@ if (isset($_POST) && !empty($_POST)) {
         $insert->bindParam(2, $description);
         $insert->bindParam(3, $language);
         $insert->execute();
-        echo '<div class="alert alert-success" role="alert"><b>Projet créé.</b></div> <meta http-equiv="REFRESH" content="3;url=/taskman/admin/projects/index.php">';
+        echo '<div class="alert alert-success" role="alert"><b>Projet créé.</b></div> <meta http-equiv="REFRESH" content="3;url=/admin/projects/index.php">';
     } catch (PDOException $e) {
         die('<div class="alert alert-denager" role="alert"><b>Une erreur s\'est produite lors de la création du project :</b>' . $e->getMessage());
     }
