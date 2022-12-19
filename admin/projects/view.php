@@ -37,8 +37,8 @@ require('../../controllers/projects/ViewController.php');
                     <th><?= $ligne['id'] ?>
                     <td><?= $ligne['description'] ?></td>
                     <td>
-                        <a href="/taskman/admin/tasks/edit.php?project=<?= $ligne['id'] ?>" class="btn btn-primary">Modifier</a>
-                        <a href="/taskman/admin/tasks/delete.php?id=<?= $ligne['id'] ?>" class="btn btn-danger">Supprimer</a>
+                        <a href="/admin/tasks/edit.php?project=<?= $ligne['id'] ?>" class="btn btn-primary">Modifier</a>
+                        <a href="/admin/tasks/delete.php?id=<?= $ligne['id'] ?>" class="btn btn-danger">Supprimer</a>
                     </td>
                 </tr>
             </tbody>
@@ -46,7 +46,7 @@ require('../../controllers/projects/ViewController.php');
         ?>
     </table>
 </div>
-<a href="/taskman/admin/tasks/new.php?project=<?= $id ?>"><button class="btn btn-primary">Ajouter une tâche</button></a>
+<a href="/admin/tasks/new.php?project=<?= $id ?>"><button class="btn btn-primary">Ajouter une tâche</button></a>
 <a href="index.php"><button class="btn btn-danger">Retour</button></a>
 
 <?php

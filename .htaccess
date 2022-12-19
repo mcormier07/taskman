@@ -1,0 +1,36 @@
+RewriteEngine On
+
+# ---- NE PAS SUPPRIMER ---- #
+RewriteRule auth public/home/index.php
+
+# ---- ADMINISTRATION ---- #
+RewriteRule projects admin/projects/index.php
+RewriteRule projects/new admin/projects/new.php
+RewriteRule projetcs/view-project/([0-9]+) admin/projects/view.php?id=$1
+RewriteRule projetcs/edit-project/([0-9]+) admin/projects/edit.php?id=$1
+RewriteRule projects/remove-project/([0-9]+) admin/projects/delete.php?id=$1
+
+RewriteRule projects/create-task/([0-9]+) admin/tasks/new.php
+RewriteRule projects/edit-task/([0-9]+) admin/tasks/edit.php?id=$1
+RewriteRule projects/remove-task/([0-9]+) admin/tasks/delete.php?id=$1
+
+# ---- PATCH ---- #
+
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule !.*\.php$ %{REQUEST_FILENAME}.php [QSA,L]
+
+
+# BLOCAGE DES INJECTION
+
+RewriteCond %{REQUEST_METHOD} GET
+RewriteCond %{QUERYSTRING} [a-zA-Z0-9]=http:// [OR]
+RewriteCond %{QUERYSTRING} [a-zA-Z0-9]=(..//?)+ [OR]
+RewriteCond %{QUERYSTRING} [a-zA-Z0-9]=/([a-z0-9_.]//?)+ [NC]
+RewriteRule . - [F]
+
+# Protections diverses (XSS, clickjacking et MIME-Type sniffing)
+<ifModule mod_headers.c>
+Header set X-XSS-Protection "1; mode=block"
+Header always append X-Frame-Options SAMEORIGIN
+Header set X-Content-Type-Options: "nosniff"
+</ifModule>
