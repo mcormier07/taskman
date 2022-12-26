@@ -2,6 +2,7 @@ RewriteEngine On
 
 # ---- NE PAS SUPPRIMER ---- #
 RewriteRule auth public/home/index.php
+RewriteRule auth/logout public/auth/logout.php
 
 # ---- ADMINISTRATION ---- #
 RewriteRule projects admin/projects/index.php
